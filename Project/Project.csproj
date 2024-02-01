@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\css\Fuelquote.css" />
+    <None Include="wwwroot\css\fuelform.css" />
   </ItemGroup>
 
 </Project>
