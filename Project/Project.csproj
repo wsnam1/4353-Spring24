@@ -19,8 +19,4 @@
     <PackageReference Include="MySql.EntityFrameworkCore" Version="8.0.0" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="wwwroot\css\fuelform.css" />
-  </ItemGroup>
-
 </Project>
