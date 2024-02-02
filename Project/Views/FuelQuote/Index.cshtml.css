@@ -1,4 +1,4 @@
-body {
+﻿body {
     background: white;
     margin: 0;
 }
@@ -15,7 +15,6 @@ body {
     box-sizing: border-box;
     font-family: 'Montserrat', sans-serif;
     position: relative;
-    
 }
 
 h2 {
@@ -39,9 +38,9 @@ input {
     border-bottom: 2px solid #bebed2;
 }
 
-input:focus {
-    border-bottom: 2px solid #78788c;
-}
+    input:focus {
+        border-bottom: 2px solid #78788c;
+    }
 
 p:before {
     content: attr(type);
@@ -60,8 +59,6 @@ button {
     background: 0;
     color: #5a5a6e;
     cursor: pointer;
-    
-
 }
 
 
@@ -71,8 +68,7 @@ input::-webkit-inner-spin-button {
     margin: 0;
 }
 
-.centerbutton{
-
-     display: flex;
-     justify-content: center;
- }
+.centerbutton {
+    display: flex;
+    justify-content: center;
+}

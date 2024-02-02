@@ -1,13 +1,36 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+	ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">HEllO</h1>
-    <p>blah blah</p>
-    <a href="/FuelQuote/Index"><button>fuel quote</button></a>
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<script src="/js/site.js"></script>
 
+
+<div id="particles-js"></div>
+<div class="text-center">
+	<div class="home-text">
+		<h1 class="display-4">Welcome!</h1>
+	</div>
+	<div class="home-button">
+		<a asp-area="" asp-controller="FuelQuote" asp-action="Index" class="btn btn-primary">Fuel Quote</a>
+	</div>
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
