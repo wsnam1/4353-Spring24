@@ -1,26 +1,28 @@
 ﻿<link rel="stylesheet" href="/css/fuelquoteform.css">
 
-
-<div class="container">
-    <form id="contact" action="" method="post">
-        <h3>Fuel Quote Form</h3>
-        <fieldset>
-            <input placeholder="Gallons Requested:" type="number" name="gallonsRequested" tabindex="1" required autofocus>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Delivery Address" type="text" name="deliveryAddress" tabindex="2" readonly>
-        </fieldset>
-        <fieldset>
-            <input placeholder="Delivery Date" type="date" name="deliveryDate" tabindex="3">
-        </fieldset>
-        <fieldset>
-            <input placeholder="Suggested Price / gallon" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module -->
-        </fieldset>
-        <fieldset>
-            <input placeholder="Total Amount Due" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) -->
-        </fieldset>
-        <fieldset>
-            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-        </fieldset>
-    </form>
+<div class="text-center">
+    <div class="container">
+        <form id="contact" action="" method="post" >
+            <h3>Fuel Quote Form</h3>
+            <fieldset>
+                <input placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Delivery Address" type="text" name="deliveryAddress" tabindex="2" readonly>
+            </fieldset>
+            <fieldset>
+                <input placeholder="Delivery Date" type="date" name="deliveryDate" tabindex="3">
+            </fieldset>
+            <fieldset>
+                <input placeholder="Suggested Price per gallon" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module -->
+            </fieldset>
+            <fieldset>
+                <input placeholder="Total Amount Due" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) -->
+            </fieldset>
+            <br/>
+            <fieldset class ="centerbutton">
+                <button  name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
+            </fieldset>
+        </form>
+    </div>
 </div>
