@@ -8,7 +8,6 @@ namespace Project.Controllers
 	{
 		private readonly ILogger<HomeController> _logger;
 
-
 		public HomeController(ILogger<HomeController> logger)
 		{
 			// Used to log and debug info
@@ -18,16 +17,20 @@ namespace Project.Controllers
 		// GET: /Home
 		public IActionResult Index()
 		{
-			return View();
+            
+            return View();
 		}
 
 		// GET: /Home/Privacy
 		public IActionResult Privacy()
 		{
+			_logger.LogInformation("Privacy page visited");
 			return View();
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
+		// Set as default method for handling errors. Declared in Program.cs
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

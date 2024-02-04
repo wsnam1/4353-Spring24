@@ -13,6 +13,9 @@
 
 <body>
     <ul class="navbar-nav">
+        <!-- SignInManager is a class provided by .NET which handles user sign in.
+        IsSignedIn is a method provided by the SignInManager class. It returns true if the user is authenticated.
+        'User' is a special variable that comes from the identity services intialized in Program.cs -->
         @if (SignInManager.IsSignedIn(User))
         {
             <li class="nav-item dropdown">

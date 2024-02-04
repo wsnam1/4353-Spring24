@@ -1,4 +1,5 @@
-﻿@model ErrorViewModel
+﻿<!-- When an error occurs in the webapp this will be the format -->
+@model ErrorViewModel // call the error model
 @{
     ViewData["Title"] = "Error";
 }
@@ -6,6 +7,8 @@
 <h1 class="text-danger">Error.</h1>
 <h2 class="text-danger">An error occurred while processing your request.</h2>
 
+<!-- ShowRequestId is a value set in the ErrorViewModel
+It's dependent on the action method called Error inside the HomeController -->
 @if (Model.ShowRequestId)
 {
     <p>
