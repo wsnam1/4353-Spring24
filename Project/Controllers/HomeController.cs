@@ -1,6 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Project.Models;
 using System.Diagnostics;
+using System.Security.Claims;
 
 namespace Project.Controllers
 {
@@ -8,8 +10,7 @@ namespace Project.Controllers
 	{
 		private readonly ILogger<HomeController> _logger;
 
-
-		public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger)
 		{
 			// Used to log and debug info
 			_logger = logger;
@@ -18,11 +19,12 @@ namespace Project.Controllers
 		// GET: /Home
 		public IActionResult Index()
 		{
-			return View();
+            return View();
 		}
 
-		// GET: /Home/Privacy
-		public IActionResult Privacy()
+
+        // GET: /Home/Privacy
+        public IActionResult Privacy()
 		{
 			return View();
 		}
