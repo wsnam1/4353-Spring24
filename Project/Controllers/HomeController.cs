@@ -22,7 +22,6 @@ namespace Project.Controllers
             return View();
 		}
 
-
         // GET: /Home/Privacy
         public IActionResult Privacy()
 		{
@@ -30,6 +29,8 @@ namespace Project.Controllers
 		}
 
 		[ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+
+		// Set as default method for handling errors. Declared in Program.cs
 		public IActionResult Error()
 		{
 			return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });

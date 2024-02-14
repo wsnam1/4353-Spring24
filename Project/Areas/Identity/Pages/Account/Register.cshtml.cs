@@ -48,12 +48,6 @@ namespace Project.Areas.Identity.Pages.Account
 		public class InputModel
 		{
 
-			/*[Required]
-            [EmailAddress]
-            [Display(Name = "Email")]
-            public string Email { get; set; }*/
-
-
 			[Required]
 			[Display(Name = "Username")]
 			[StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 4)]
@@ -65,6 +59,7 @@ namespace Project.Areas.Identity.Pages.Account
 			[DataType(DataType.Password)]
 			[Display(Name = "Password")]
 			public string Password { get; set; }
+
 
 			[DataType(DataType.Password)]
 			[Display(Name = "Confirm password")]
@@ -88,40 +83,11 @@ namespace Project.Areas.Identity.Pages.Account
 				var user = CreateUser();
 
 				await _userStore.SetUserNameAsync(user, Input.Username, CancellationToken.None);
-				//await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
 				var result = await _userManager.CreateAsync(user, Input.Password);
 
 				if (result.Succeeded)
 				{
-					_logger.LogInformation("User created a new account with password.");
 
-					/*var userId = await _userManager.GetUserIdAsync(user);
-					  var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-					  code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-					  var callbackUrl = Url.Page(
-						  "/Account/ConfirmEmail",
-						  pageHandler: null,
-						  values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-						  protocol: Request.Scheme);
-
-					  await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-						  $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-					  // Since we have set options.SignIn.RequireConfirmedAccount = false inside Program.cs then we just execute the else condition
-					  if (_userManager.Options.SignIn.RequireConfirmedAccount)
-					  {
-						  return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-
-					  }*/
-
-					// Get rid of automatic sign in after resgistration and instead redirect to login page
-
-					/* 
-                    await _signInManager.SignInAsync(user, isPersistent: false);
-                    return LocalRedirect(returnUrl);
-                    */
-
-					// Redirect to the login page instead
 					return RedirectToPage("Login");
 
 				}

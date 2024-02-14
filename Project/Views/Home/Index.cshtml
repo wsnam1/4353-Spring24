@@ -1,20 +1,30 @@
-﻿@{
-	ViewData["Title"] = "Home Page";
+﻿@{// Intialize a C# code block with @{ }
+
+	// Initialize a dictionary with the key-value pair Title: Home
+	ViewData["Title"] = "Home";
 }
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-<script src="/js/site.js"></script>
+<head>
+	<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+	<script src="/js/site.js"></script>
+</head>
 
 
-<div id="particles-js"></div>
-<div class="text-center">
-	<div class="home-text">
-		<h1 class="display-4">Welcome!</h1>
+<body>
+	<!-- Call the particle.js library. JS code is inside wwwroot -->
+	<div id="particles-js"></div>
+
+	<div class="text-center">
+		<div class="home-text">
+			<h1 class="display-4">Welcome!</h1>
+		</div>
+		<div class="home-button">
+			<!-- Make the button in the homepage call Controllers -> FuelQuoteController -> Index action method.
+			This will return the Index.cshtml view inside the FuelQuote folder -->
+			<a asp-area="" asp-controller="FuelQuote" asp-action="Index" class="btn btn-primary">Fuel Quote</a>
+		</div>
 	</div>
-	<div class="home-button">
-		<a asp-area="" asp-controller="FuelQuote" asp-action="Index" class="btn btn-primary">Fuel Quote</a>
-	</div>
-</div>
+</body>
 
 
 

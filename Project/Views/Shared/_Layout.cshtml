@@ -3,15 +3,19 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<!-- Initialize a dictionary using a code block for customizing the website title -->
 	<title>@ViewData["Title"] - Project</title>
 	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<!-- Call the nested CSS file -->
 	<link rel="stylesheet" href="~/Project.styles.css" asp-append-version="true" />
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light  border-bottom box-shadow mb-3">
 			<div class="container-fluid">
+				<!-- Make the Project button in the navbar call Controllers -> HomeController -> Index action method.
+				This will return the Index.cshtml view inside the Home folder -->
 				<a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Project</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
 						aria-expanded="false" aria-label="Toggle navigation">
@@ -26,6 +30,7 @@
 							<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
 						</li>
 					</ul>
+					<!-- The components from the _LoginPartial view will be rendered and added to the navbar -->
 					<partial name="_LoginPartial" />
 				</div>
 			</div>
