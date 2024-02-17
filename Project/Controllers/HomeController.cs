@@ -16,15 +16,13 @@ namespace Project.Controllers
 
 		// GET: /Home
 		public IActionResult Index()
-		{
-            
+		{   
             return View();
 		}
 
 		// GET: /Home/Privacy
 		public IActionResult Privacy()
 		{
-			_logger.LogInformation("Privacy page visited");
 			return View();
 		}
 
