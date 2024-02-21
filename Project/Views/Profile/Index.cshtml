@@ -1,19 +1,9 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
+﻿@{
+    ViewData["Title"] = "Client Profile Management";
 }
 
-
-
-<!DOCTYPE html>
-<html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Client Profile Management</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>@ViewData["Title"]</title>
 </head>
 
 <body>
@@ -87,15 +77,12 @@
                 <option value="WY">Wyoming</option>
             </select>
 
-
             <label for="zipcode">Zipcode:</label>
             <input type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="9" required>
 
-            <button type="save">Save Profile</button>
+            <button type="submit">Save Profile</button>
         </form>
     </div>
 </body>
-
-</html>
 
 
