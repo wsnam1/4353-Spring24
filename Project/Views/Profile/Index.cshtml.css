@@ -1,8 +1,6 @@
-﻿body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f4f4f4;
+﻿h2 {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .container {
@@ -14,10 +12,6 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-h2 {
-    text-align: center;
-}
-
 form {
     display: grid;
     grid-gap: 10px;
@@ -27,12 +21,14 @@ label {
     font-weight: bold;
 }
 
-input[type="text"] {
-    width: calc(100% - 22px);
+input {
+    width: 100%;
     padding: 10px;
     font-size: 16px;
     border-radius: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid;
+    border-color: gray;
+    margin-bottom: 10px;
 }
 
 select {
@@ -42,6 +38,7 @@ select {
     border-radius: 5px;
     border: 1px solid #ccc;
     box-sizing: border-box;
+    margin-bottom: 10px;
 }
 
 button {
@@ -52,6 +49,7 @@ button {
     color: #fff;
     border: none;
     border-radius: 5px;
+    margin-top: 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -60,6 +58,6 @@ button {
         background-color: #0056b3;
     }
 
-input:invalid {
+/*input:invalid {
     border-color: #ff0000;
-}
+}*/
