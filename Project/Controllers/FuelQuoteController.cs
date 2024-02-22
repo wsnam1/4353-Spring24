@@ -1,4 +1,8 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Project.Models;
+
+
 namespace Project.Controllers
 {
 	public class FuelQuoteController : Controller
