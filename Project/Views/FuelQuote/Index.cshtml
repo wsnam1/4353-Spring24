@@ -1,31 +1,83 @@
-﻿<!-- Call the nested CSS file -->
-<link rel="stylesheet" href="~/Project.styles.css" asp-append-version="true" />
+﻿@model FuelHistory
 
-<div class="text-center">
-    <div class="container">
-        <!-- HTTP verb will be POST so declare method="post" -->
-        <form id="contact" action="" method="post" >
-            <h3>Fuel Quote Form</h3>
-            <fieldset>
-                <input placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
-            </fieldset>
-            <fieldset>
-                <input placeholder="Delivery Address" type="text" name="deliveryAddress" tabindex="2" readonly>
-            </fieldset>
-            <fieldset>
-                <input placeholder="Delivery Date" type="date" name="deliveryDate" tabindex="3">
-            </fieldset>
-            <fieldset>
-                <input placeholder="Suggested Price per gallon" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module -->
-            </fieldset>
-            <fieldset>
-                <input placeholder="Total Amount Due" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) -->
-            </fieldset>
-            <br/>
-            <fieldset class ="centerbutton">
-                <button  name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button>
-            </fieldset>
-        </form>
+
+<form method="post">
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-primary">Fuel Quote Form</h1>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input asp-for="GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input placeholder="Delivery Address" class="form-control" type="text" name="deliveryAddress" tabindex="2" readonly>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" name="deliveryDate" tabindex="3">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input placeholder="Suggested Price per gallon" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module -->
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <input placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) -->
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-6">
+                <button type="submit" class="btn btn-primary btn-block form-control ">Submit</button>
+            </div>
+            <div class="col-6 py-2">
+                
+                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a>
+            </div>
+        </div>
     </div>
-</div>
+</form>
+
+
+
+
+@* <!-- Call the nested CSS file --> *@
+@* <link rel="stylesheet" href="~/Project.styles.css" asp-append-version="true" /> *@
+@* *@
+@* <div class="text-center"> *@
+@*     <div class="container"> *@
+@*         <!-- HTTP verb will be POST so declare method="post" --> *@
+@*         <form id="contact" action="" method="post" > *@
+@*             <h3>Fuel Quote Form</h3> *@
+@*             <fieldset> *@
+@*                 <label asp-for="GallonsRequested"></label> *@
+@*                 <input placeholder="Gallons Requested" label asp-for="GallonsRequested" type="number" name="gallonsRequested" tabindex="1" required autofocus> *@
+@*             </fieldset> *@
+@*             <fieldset> *@
+@*                 <input placeholder="Delivery Address" type="text" name="deliveryAddress" tabindex="2" readonly> *@
+@*             </fieldset> *@
+@*             <fieldset> *@
+@*                 <label asp-for="DeliveryDate"></label> *@
+@*                 <input asp-for="DeliveryDate" placeholder="Delivery Date"  type="date" name="deliveryDate" tabindex="3"> *@
+@*             </fieldset> *@
+@*             <fieldset> *@
+@*                 <input placeholder="Suggested Price per gallon" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module --> *@
+@*             </fieldset> *@
+@*             <fieldset> *@
+@*                 <input placeholder="Total Amount Due" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) --> *@
+@*             </fieldset> *@
+@*             <br/> *@
+@*             <fieldset class ="centerbutton"> *@
+@*                 <button  name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> *@
+@*             </fieldset> *@
+@*         </form> *@
+@*     </div> *@
+@* </div> *@
 
