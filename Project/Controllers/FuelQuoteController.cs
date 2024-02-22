@@ -8,6 +8,10 @@ namespace Project.Controllers
 		{
 			return View();
 		}
-
+		// GET: /FuelQuote/History
+		public IActionResult History()
+		{
+			return View();
+		}
 	}
 }
