@@ -20,7 +20,7 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" name="deliveryDate" tabindex="3">
+                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3">
             </div>
         </div>
         <div class="row mb-3">
@@ -47,37 +47,4 @@
 
 
 
-
-@* <!-- Call the nested CSS file --> *@
-@* <link rel="stylesheet" href="~/Project.styles.css" asp-append-version="true" /> *@
-@* *@
-@* <div class="text-center"> *@
-@*     <div class="container"> *@
-@*         <!-- HTTP verb will be POST so declare method="post" --> *@
-@*         <form id="contact" action="" method="post" > *@
-@*             <h3>Fuel Quote Form</h3> *@
-@*             <fieldset> *@
-@*                 <label asp-for="GallonsRequested"></label> *@
-@*                 <input placeholder="Gallons Requested" label asp-for="GallonsRequested" type="number" name="gallonsRequested" tabindex="1" required autofocus> *@
-@*             </fieldset> *@
-@*             <fieldset> *@
-@*                 <input placeholder="Delivery Address" type="text" name="deliveryAddress" tabindex="2" readonly> *@
-@*             </fieldset> *@
-@*             <fieldset> *@
-@*                 <label asp-for="DeliveryDate"></label> *@
-@*                 <input asp-for="DeliveryDate" placeholder="Delivery Date"  type="date" name="deliveryDate" tabindex="3"> *@
-@*             </fieldset> *@
-@*             <fieldset> *@
-@*                 <input placeholder="Suggested Price per gallon" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module --> *@
-@*             </fieldset> *@
-@*             <fieldset> *@
-@*                 <input placeholder="Total Amount Due" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) --> *@
-@*             </fieldset> *@
-@*             <br/> *@
-@*             <fieldset class ="centerbutton"> *@
-@*                 <button  name="submit" type="submit" id="contact-submit" data-submit="...Sending">Submit</button> *@
-@*             </fieldset> *@
-@*         </form> *@
-@*     </div> *@
-@* </div> *@
 

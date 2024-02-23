@@ -1,4 +1,3 @@
-
 <title>Fuel Quote History</title>
 <body>
   <h1 class="text-center">Fuel Quote History</h1>
@@ -51,28 +50,28 @@
 </table>
 </body>
 
-
+@* *@
 @* @model List<FuelHistory> *@
 @* *@
-@* <div class="container"> *@
+@* <div class="container "> *@
 @*     <div class="row pt-4 pb-3"> *@
-@*          *@
+@* *@
 @*         <div class="col-6"> *@
 @*             <h1 class="text-primary"> *@
-@*                 Fuel History *@
+@*                 Fuel Quote History *@
 @*             </h1> *@
 @*         </div> *@
-@*          *@
+@* *@
 @*         <div class="col-6 text-end"> *@
 @*             <a asp-controller="FuelQuote" asp-action="index" class="btn btn-primary"> *@
 @*                 <i class=" bi bi-plus-circle"></i>More Quote *@
 @*             </a> *@
-@*              *@
+@* *@
 @*         </div> *@
-@*          *@
+@* *@
 @*     </div> *@
-@*      *@
-@*     <table class="table table-bordered table-striped"> *@
+@* *@
+@*     <table class="table table-bordered table-striped table-responsive "> *@
 @*         <thread> *@
 @*             <tr> *@
 @*                 <th> *@
@@ -80,25 +79,42 @@
 @*                 </th> *@
 @*                 <th> *@
 @*                     Delivery Address *@
+@*                 </th>                 *@
+@*                 <th> *@
+@*                     Order Number *@
+@*                 </th> *@
+@*                 <th> *@
+@*                     Name *@
+@*                 </th>  *@
+@*                 <th> *@
+@*                     Status *@
+@*                 </th> *@
+@*                  *@
+@* *@
+@*                 <th> *@
+@*                     Delivery Date *@
+@*                 </th> *@
+@*                 <th> *@
+@*                     Suggested Price per Gallon *@
+@*                 </th> *@
+@*                 <th> *@
+@*                     Total Amount due *@
 @*                 </th> *@
 @*                  *@
 @*             </tr> *@
-@*              *@
+@* *@
 @*         </thread> *@
 @*         <tbody> *@
-@*             @foreach (var obj in Model) *@
-@*             { *@
-@*                 <tr> *@
-@*                  *@
-@*                     <td>@obj.GallonsRequested</td> *@
-@*                     <td>@obj.DeliveryDate</td> *@
-@*                 </tr> *@
-@*             } *@
-@*          *@
+@*         @foreach (var obj in Model) *@
+@*         { *@
+@*             <tr> *@
+@* *@
+@*                 <td>@obj.GallonsRequested</td> *@
+@*                 <td>@obj.DeliveryDate</td> *@
+@*                 <td>@obj.Id</td> *@
+@*             </tr> *@
+@*         } *@
+@* *@
 @*         </tbody> *@
 @*     </table> *@
 @* </div> *@
-@* *@
-@* *@
-
-
