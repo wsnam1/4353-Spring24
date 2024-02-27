@@ -13,13 +13,5 @@ namespace Project.Data
 
 		public DbSet<FuelHistory> FuelHistories { get; set; }
 
-		protected void OnModelCreating(ModelBuilder modelBuilder)
-		{
-
-			modelBuilder.Entity<FuelHistory>().HasData(
-				new FuelHistory { Id = 1, DeliveryDate = "2/3/2022", GallonsRequested = 2 }
-
-			);
-		}
-	}
+    }
 }
