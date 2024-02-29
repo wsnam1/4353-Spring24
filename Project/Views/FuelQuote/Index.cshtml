@@ -1,4 +1,4 @@
-﻿@model FuelHistory
+﻿@model Project.Models.FuelQuoteViewModel
 
 
 <form method="post" asp-action="Index">
@@ -10,17 +10,17 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
+                <input asp-for="FuelHistory.GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input placeholder="Delivery Address" class="form-control" type="text" name="deliveryAddress" tabindex="2" readonly>
+                <input class="form-control" type="text" value="@Model.UserProfile.Address1" tabindex="2" readonly>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3">
+                <input asp-for="FuelHistory.DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3">
             </div>
         </div>
         <div class="row mb-3">

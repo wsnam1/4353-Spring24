@@ -1,26 +1,44 @@
 using Azure;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Data;
 using Project.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace Project.Controllers
 {
+	[Authorize]
 	public class FuelQuoteController : Controller
 	{
 
 		private readonly ApplicationDbContext _context;
+		private readonly UserManager<IdentityUser> _userManager;
 
-		public FuelQuoteController(ApplicationDbContext context)
+		public FuelQuoteController(ApplicationDbContext context, UserManager<IdentityUser> userManager)
 		{
 			_context = context;
+			_userManager = userManager;
 		}
 		// GET: /FuelQuote
 		public IActionResult Index()
 		{
-			return View();
+			var userId = _userManager.GetUserId(User);
+			var userProfile = _context.UserProfiles.SingleOrDefault(p => p.UserId == userId);
+
+			if (userProfile == null)
+			{
+				return View("Error");
+			}
+			
+			var viewModel = new FuelQuoteViewModel
+			{
+				UserProfile = userProfile,
+				FuelHistory = new FuelHistory()
+
+			};
+			return View(viewModel);
 		}
 
         // POST Method
@@ -39,13 +57,11 @@ namespace Project.Controllers
                 await _context.SaveChangesAsync();
 
                 // If the model state is valid and the data is saved successfully, redirect the user to the Index action of the Home controller.
-                return RedirectToAction("Index", "Home");
+                
             }
 
             // If the model state is not valid (e.g., required fields are missing or validation rules are not met), return the current view with the fuelQuote model. This allows the form to be re-displayed with the entered values and any validation messages.
-            return View(fuelQuote);
-
-
+            return RedirectToAction("Index", "Home");
         }
 
         // GET: /FuelQuote/History
