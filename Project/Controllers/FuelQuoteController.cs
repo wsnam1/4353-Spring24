@@ -32,6 +32,11 @@ namespace Project.Controllers
 			{
                 ViewBag.DeliveryAddress = userProfile.Address1;
             }
+            else
+            {
+                // Temporary else statement
+                ViewBag.DeliveryAddress = "Null";
+            }
 			
 			return View();
 		}
@@ -76,6 +81,11 @@ namespace Project.Controllers
             if (userProfile != null)
             {
                 ViewBag.DeliveryAddress = userProfile.Address1;
+            }
+            else
+            {
+                // Temporary else statement
+                ViewBag.DeliveryAddress = "Null";
             }
 
             // If the model state is not valid (e.g., required fields are missing or validation rules are not met), return the current view with the fuelQuote model. This allows the form to be re-displayed with the entered values and any validation messages.
