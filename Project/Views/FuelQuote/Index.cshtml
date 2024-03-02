@@ -1,7 +1,14 @@
-﻿@model Project.Models.FuelQuoteViewModel
+﻿@model Project.Models.FuelHistory
 
 
 <form method="post" asp-action="Index">
+
+    <!-- Assigning static values to hidden fields -->
+    <input type="hidden" asp-for="DeliveryAddress" value="123 Main Street" />
+    <input type="hidden" asp-for="SuggestedPrice" value="1" />
+    <input type="hidden" asp-for="TotalAmountDue" value="1" />
+
+
     <div class="container mt-4">
         <div class="row">
             <div class="col">
@@ -10,17 +17,17 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="FuelHistory.GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
+                <input asp-for="GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input class="form-control" type="text" value="@Model.UserProfile.Address1" tabindex="2" readonly>
+                <input class="form-control" type="text" value="Placeholder" tabindex="2" readonly>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="FuelHistory.DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3">
+                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3">
             </div>
         </div>
         <div class="row mb-3">
