@@ -23,11 +23,12 @@ namespace Project.Controllers
 		// GET: /FuelQuote
 		public IActionResult Index()
 		{
-            // Use a ViewBag the delivery address coming the from the user's profile to display it in the view 
+            // Get the Id of the current logged-in user
             var userId = _userManager.GetUserId(User);
             var userProfile = _context.UserProfiles.SingleOrDefault(p => p.UserId == userId);
 
-			if (userProfile != null)
+            // Use a ViewBag the delivery address coming the from the user's profile to display it in the view 
+            if (userProfile != null)
 			{
                 ViewBag.DeliveryAddress = userProfile.Address1;
             }
@@ -86,7 +87,7 @@ namespace Project.Controllers
         public async Task<IActionResult> History()
         {
 
-            // Step 1: Get the id of the user
+            // Step 1: Get the id of the user. We have some code above for this.
 
             // Step 2: Get a list of all the fuel quote histories from the FuelHistories table in the db that match the user id
             // You can use the .Where() and .ToListAsync() methods for this
