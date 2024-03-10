@@ -273,8 +273,4 @@ __pycache__/
 
 # End of https://www.toptal.com/developers/gitignore/api/aspnetcore
 
-appsettings.json
-
-/appsettings.json/
-
 .DS_Store
