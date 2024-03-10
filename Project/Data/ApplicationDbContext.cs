@@ -11,8 +11,8 @@ namespace Project.Data
 
 		}
 
-		public DbSet<FuelHistory> FuelHistories { get; set; }
-		public DbSet<UserProfile> UserProfiles { get; set; }
+		public virtual DbSet<FuelHistory> FuelHistories { get; set; }
+		public virtual DbSet<UserProfile> UserProfiles { get; set; }
 
 
     }
