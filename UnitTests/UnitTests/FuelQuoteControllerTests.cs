@@ -47,7 +47,9 @@ public class FuelQuoteControllerTests
         var userId = "TestId";
         var address1 = "123 Main St";
 
-        _mockInitializer.MockUserManager.Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns(userId);
+        _mockInitializer.MockUserManager
+            .Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>()))
+            .Returns(userId);
 
         // Set up the mock DbSet for UserProfiles
         var mockUserProfiles = new List<UserProfile>
@@ -67,7 +69,9 @@ public class FuelQuoteControllerTests
         var mockUserProfilesDbSet = CreateMockDbSet(mockUserProfiles);
 
         // Set up the mock DbSet on the mock ApplicationDbContext
-        _mockInitializer.MockContext.Setup(c => c.UserProfiles).Returns(mockUserProfilesDbSet.Object);
+        _mockInitializer.MockContext
+            .Setup(c => c.UserProfiles)
+            .Returns(mockUserProfilesDbSet.Object);
 
         // Act 
         var result = _controller.Index();
@@ -98,10 +102,14 @@ public class FuelQuoteControllerTests
         };
 
         // Simulate a GetUserId operation with a mock userManager. Make it return the fake id "TestId"
-        _mockInitializer.MockUserManager.Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns("TestId");
+        _mockInitializer.MockUserManager
+            .Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>()))
+            .Returns("TestId");
 
         // Simulate a SaveChangesAsync operation to a mock db context. Make it return the integer 1, indicating 1 record was changed or added
-        _mockInitializer.MockContext.Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>())).Returns(Task.FromResult(1));
+        _mockInitializer.MockContext
+            .Setup(c => c.SaveChangesAsync(It.IsAny<CancellationToken>()))
+            .Returns(Task.FromResult(1));
 
         // Act
         // Call the Index method
@@ -160,8 +168,12 @@ public class FuelQuoteControllerTests
 
         var mockUserProfilesDbSet = CreateMockDbSet(mockUserProfiles);
 
-        _mockInitializer.MockUserManager.Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>())).Returns(userId);
-        _mockInitializer.MockContext.Setup(c => c.UserProfiles).Returns(mockUserProfilesDbSet.Object);
+        _mockInitializer.MockUserManager
+            .Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>()))
+            .Returns(userId);
+        _mockInitializer.MockContext
+            .Setup(c => c.UserProfiles)
+            .Returns(mockUserProfilesDbSet.Object);
 
         // Act
         var result = await _controller.Index(fuelQuote) as ViewResult;
