@@ -9,6 +9,7 @@ using Project.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Humanizer;
+using Microsoft.AspNetCore.Authentication;
 
 [TestClass]
 public class LoginModelTests
@@ -22,13 +23,20 @@ public class LoginModelTests
     public void Setup()
     {
         _mockInitializer = new MockInitializer();
-
         _mockLogger = new Mock<ILogger<LoginModel>>();
 
-        // Setting up the PageModel
-        var serviceProvider = new ServiceCollection()
-        .AddLogging()
-        .BuildServiceProvider();
+        // Create a mock IAuthenticationService
+        var mockAuthService = new Mock<IAuthenticationService>();
+        mockAuthService
+            .Setup(_ => _.SignOutAsync(It.IsAny<HttpContext>(), It.IsAny<string>(), It.IsAny<AuthenticationProperties>()))
+            .Returns(Task.CompletedTask);
+
+        // Setting up the PageModel with a ServiceCollection that includes the mocked IAuthenticationService
+        var services = new ServiceCollection();
+        services.AddLogging();
+        services.AddSingleton<IAuthenticationService>(mockAuthService.Object); // Add the mock IAuthenticationService
+
+        var serviceProvider = services.BuildServiceProvider();
 
         var httpContext = new DefaultHttpContext()
         {
@@ -42,25 +50,21 @@ public class LoginModelTests
             PageContext = new PageContext(actionContext),
             Url = new UrlHelper(actionContext)
         };
-
-
-        // Set HttpContext so that UrlHelper can work
-        _httpContext = new DefaultHttpContext();
-        _loginModel.Url = new UrlHelper(new ActionContext(_httpContext, new RouteData(), new PageActionDescriptor()));
     }
 
-    /*[TestMethod]
+
+    [TestMethod]
     public async Task OnGetAsync_WithReturnUrl_SetsReturnUrl()
     {
         // Arrange
-        var returnUrl = "/Home";
+        var returnUrl = "/";
 
         // Act
         await _loginModel.OnGetAsync(returnUrl);
 
         // Assert
         Assert.AreEqual(returnUrl, _loginModel.ReturnUrl);
-    }*/
+    }
 
     [TestMethod]
     public async Task OnPostAsync_WithValidModelState_ReturnsRedirect()
@@ -79,7 +83,7 @@ public class LoginModelTests
         // Params: .PasswordSignInAsync(Input.Username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         // Make the mock call return a SignInResult of Success
         _mockInitializer.MockSignInManager
-            .Setup(manager => manager.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
+            .Setup(m => m.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
             .ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Success);
 
         // Act
@@ -107,7 +111,7 @@ public class LoginModelTests
         // Params: .PasswordSignInAsync(Input.Username, Input.Password, Input.RememberMe, lockoutOnFailure: false);
         // Make the mock call return a SignInResult of Failed
         _mockInitializer.MockSignInManager
-            .Setup(manager => manager.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
+            .Setup(m => m.PasswordSignInAsync(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<bool>(), It.IsAny<bool>()))
             .ReturnsAsync(Microsoft.AspNetCore.Identity.SignInResult.Failed);
 
         // Act
