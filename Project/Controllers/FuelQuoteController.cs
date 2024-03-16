@@ -1,4 +1,3 @@
-using Azure;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Project.Data;
@@ -9,7 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace Project.Controllers
 {
 	[Authorize]
-	public class FuelQuoteController : Controller
+    [ProfileCompletionFilter]
+    public class FuelQuoteController : Controller
 	{
 
 		private readonly ApplicationDbContext _context;
