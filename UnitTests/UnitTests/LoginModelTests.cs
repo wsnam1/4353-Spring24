@@ -8,7 +8,6 @@ using Moq;
 using Project.Areas.Identity.Pages.Account;
 using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
-using Humanizer;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 
