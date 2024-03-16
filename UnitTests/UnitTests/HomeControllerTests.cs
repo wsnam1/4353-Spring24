@@ -8,16 +8,14 @@ using Project.Controllers;
 [TestClass]
 public class HomeControllerTests
 {
-
-    private Mock<ILogger<HomeController>> _mockLogger;
     private HomeController _controller;
 
     [TestInitialize]
     public void Setup()
     {
         // Mock the logger argument passed to the home controller with dependency injection to simulate a real logger
-        _mockLogger = new Mock<ILogger<HomeController>>();
-        _controller = new HomeController(_mockLogger.Object);
+        var mockLogger = new Mock<ILogger<HomeController>>();
+        _controller = new HomeController(mockLogger.Object);
     }
 
     [TestMethod]

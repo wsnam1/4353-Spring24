@@ -36,8 +36,11 @@ public class FuelQuoteControllerTests
         return mockDbSet;
     }
 
+
+
+    // GET of Index method with userProfile != null
     [TestMethod]
-    public void Index_ReturnsViewResult()
+    public void Index_ReturnsViewResult_ViewBagAddress1()
     {
         // Arrange
 
@@ -74,15 +77,57 @@ public class FuelQuoteControllerTests
             .Returns(mockUserProfilesDbSet.Object);
 
         // Act 
-        var result = _controller.Index();
+        var result = _controller.Index() as ViewResult;
 
         // Assert
         Assert.IsNotNull(result);
         // ViewBag is rendered to the view dynamically, the return statement ViewResult does not contain a ViewBag so we must access through _controller
         Assert.AreEqual(address1, _controller.ViewBag.DeliveryAddress);
         Assert.IsInstanceOfType(result, typeof(ViewResult));
+        
     }
 
+    // GET of Index method with userProfile == null
+    [TestMethod]
+    public void Index_ReturnsViewResult_ViewBagNull()
+    {
+        // Arrange
+
+        // Clear the model state to prevent any unexpected behaviour in our test
+        _controller.ModelState.Clear();
+
+        var userId = "TestId";
+
+        _mockInitializer.MockUserManager
+            .Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>()))
+            .Returns(userId);
+
+        // Set up the mock DbSet for UserProfiles
+        var mockUserProfiles = new List<UserProfile>
+        {
+            new UserProfile { }
+        }.AsQueryable();
+
+        var mockUserProfilesDbSet = CreateMockDbSet(mockUserProfiles);
+
+        // Set up the mock DbSet on the mock ApplicationDbContext
+        _mockInitializer.MockContext
+            .Setup(c => c.UserProfiles)
+            .Returns(mockUserProfilesDbSet.Object);
+
+        // Act 
+        var result = _controller.Index() as ViewResult;
+
+        // Assert
+        Assert.IsNotNull(result);
+        // ViewBag is rendered to the view dynamically, the return statement ViewResult does not contain a ViewBag so we must access through _controller
+        Assert.AreEqual("Null", _controller.ViewBag.DeliveryAddress);
+        Assert.IsInstanceOfType(result, typeof(ViewResult));
+
+    }
+
+
+    // POST of Index method
     [TestMethod]
     public async Task Index_ValidModel_RedirectsToHomeIndex()
     {
@@ -129,8 +174,9 @@ public class FuelQuoteControllerTests
 
     }
 
+    // POST of Index method with invalid model returns view result and userProfile is set to != null so Viewbag returns Address1
     [TestMethod]
-    public async Task Index_InvalidModel_ReturnsViewResult()
+    public async Task Index_InvalidModel_ReturnsViewResult_ViewBagAddress1()
     {
 
         // Arrange
@@ -181,6 +227,54 @@ public class FuelQuoteControllerTests
         // Assert
         Assert.IsNotNull(result);
         Assert.IsFalse(_controller.ModelState.IsValid); // Ensure model state is indeed invalid as intended
+        Assert.AreEqual(address1, _controller.ViewBag.DeliveryAddress);
+        Assert.AreEqual(fuelQuote, result?.Model); // Check if the method returns the correct view with the original model
+    }
+
+    // POST of Index method with invalid model returns view result and userProfile is set to == null so Viewbag returns Null
+    [TestMethod]
+    public async Task Index_InvalidModel_ReturnsViewResult_ViewBagNull()
+    {
+
+        // Arrange
+        _controller.ModelState.Clear();
+
+        _controller.ModelState.AddModelError("Error", "Model state is invalid");
+
+        var userId = "TestId";
+
+        var fuelQuote = new FuelHistory
+        {
+            // Populating with potentially valid data, but ModelState is explicitly made invalid in SetUp
+            GallonsRequested = 100,
+            DeliveryAddress = "123 Main St",
+            DeliveryDate = "2022-01-01",
+            SuggestedPrice = 2.5m,
+            TotalAmountDue = 250m
+        };
+
+        // Set up the mock DbSet for UserProfiles
+        var mockUserProfiles = new List<UserProfile>
+        {
+            new UserProfile { }
+        }.AsQueryable();
+
+        var mockUserProfilesDbSet = CreateMockDbSet(mockUserProfiles);
+
+        _mockInitializer.MockUserManager
+            .Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>()))
+            .Returns(userId);
+        _mockInitializer.MockContext
+            .Setup(c => c.UserProfiles)
+            .Returns(mockUserProfilesDbSet.Object);
+
+        // Act
+        var result = await _controller.Index(fuelQuote) as ViewResult;
+
+        // Assert
+        Assert.IsNotNull(result);
+        Assert.IsFalse(_controller.ModelState.IsValid); // Ensure model state is indeed invalid as intended
+        Assert.AreEqual("Null", _controller.ViewBag.DeliveryAddress);
         Assert.AreEqual(fuelQuote, result?.Model); // Check if the method returns the correct view with the original model
     }
 
@@ -195,6 +289,4 @@ public class FuelQuoteControllerTests
         Assert.IsInstanceOfType(result, typeof(Task<IActionResult>));
 
     }
-
-    
 }
