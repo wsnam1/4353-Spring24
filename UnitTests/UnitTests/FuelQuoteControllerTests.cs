@@ -1,11 +1,10 @@
-﻿
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Moq;
 using Project.Controllers;
 using Project.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
-using MySqlX.XDevAPI.Common;
+
 
 
 
@@ -172,6 +171,7 @@ public class FuelQuoteControllerTests
         Assert.AreEqual("Home", redirectResult.ControllerName);
         Assert.AreEqual("Index", redirectResult.ActionName);
 
+
     }
 
     // POST of Index method with invalid model returns view result and userProfile is set to != null so Viewbag returns Address1
@@ -287,6 +287,5 @@ public class FuelQuoteControllerTests
         // Assert
         Assert.IsNotNull(result);
         Assert.IsInstanceOfType(result, typeof(Task<IActionResult>));
-
     }
 }
