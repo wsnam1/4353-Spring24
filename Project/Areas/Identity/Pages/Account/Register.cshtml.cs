@@ -111,7 +111,7 @@ namespace Project.Areas.Identity.Pages.Account
 			}
 		}
 
-		private IUserEmailStore<IdentityUser> GetEmailStore()
+		public IUserEmailStore<IdentityUser> GetEmailStore()
 		{
 			if (!_userManager.SupportsUserEmail)
 			{
@@ -119,5 +119,7 @@ namespace Project.Areas.Identity.Pages.Account
 			}
 			return (IUserEmailStore<IdentityUser>)_userStore;
 		}
+
+
 	}
 }
