@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 
 
 
-
+// beginning of a test class
 [TestClass]
 public class FuelQuoteControllerTests
 {
@@ -74,6 +74,18 @@ public class FuelQuoteControllerTests
         _mockInitializer.MockContext
             .Setup(c => c.UserProfiles)
             .Returns(mockUserProfilesDbSet.Object);
+        
+        // _mockInitializer.MockContext
+        //     .Setup(c => c.UserProfiles)
+        //     .Returns(() => {
+        //         var dbSet = mockUserProfilesDbSet.Object;
+        //         // Check if the type of dbSet is correct before returning
+        //         if (dbSet.GetType() != typeof(DbSet<UserProfile>)) {
+        //             throw new InvalidOperationException("Unexpected type returned from setup.");
+        //         }
+        //         return dbSet;
+        //     });
+
 
         // Act 
         var result = _controller.Index() as ViewResult;

@@ -235,11 +235,11 @@ var assemblies = [
       { "name": "ProfileCompletionFilterAttribute", "rp": "Project_ProfileCompletionFilterAttribute.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 33, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "Project_Program.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 49, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Areas.Identity.Pages.Account.LoginModel", "rp": "Project_LoginModel.html", "cl": 34, "ucl": 0, "cal": 34, "tl": 93, "cb": 10, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Project.Areas.Identity.Pages.Account.RegisterModel", "rp": "Project_RegisterModel.html", "cl": 0, "ucl": 57, "cal": 57, "tl": 127, "cb": 0, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Project.Areas.Identity.Pages.Account.RegisterModel", "rp": "Project_RegisterModel.html", "cl": 49, "ucl": 5, "cal": 54, "tl": 125, "cb": 9, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Controllers.FuelQuoteController", "rp": "Project_FuelQuoteController.html", "cl": 42, "ucl": 0, "cal": 42, "tl": 110, "cb": 16, "tb": 16, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Controllers.HomeController", "rp": "Project_HomeController.html", "cl": 10, "ucl": 3, "cal": 13, "tl": 41, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Controllers.ProfileController", "rp": "Project_ProfileController.html", "cl": 55, "ucl": 0, "cal": 55, "tl": 104, "cb": 13, "tb": 14, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "Project.Data.ApplicationDbContext", "rp": "Project_ApplicationDbContext.html", "cl": 3, "ucl": 2, "cal": 5, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "Project.Data.ApplicationDbContext", "rp": "Project_ApplicationDbContext.html", "cl": 5, "ucl": 0, "cal": 5, "tl": 19, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Models.ErrorViewModel", "rp": "Project_ErrorViewModel.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Models.FuelHistory", "rp": "Project_FuelHistory.html", "cl": 6, "ucl": 0, "cal": 6, "tl": 23, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Models.UserProfile", "rp": "Project_UserProfile.html", "cl": 7, "ucl": 0, "cal": 7, "tl": 27, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
@@ -297,12 +297,6 @@ var riskHotspots = [
     "metrics": [
       { "value": 156, "exceeded": true },
       { "value": 12, "exceeded": false },
-    ]},
-  {
-    "assembly": "Project", "class": "Project.Areas.Identity.Pages.Account.RegisterModel", "reportPath": "Project_RegisterModel.html", "methodName": "OnPostAsync()", "methodShortName": "OnPostAsync()", "fileIndex": 0, "line": 78,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
     ]},
   {
     "assembly": "Project", "class": "AspNetCoreGeneratedDocument.Views_Shared__Layout", "reportPath": "Project_Views_Shared__Layout.html", "methodName": "<ExecuteAsync()", "methodShortName": "<ExecuteAsync()", "fileIndex": 0, "line": 7,
