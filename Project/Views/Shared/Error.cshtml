@@ -1,4 +1,7 @@
-﻿<!-- When an error occurs in the webapp this will be the format -->
+﻿@using System.Diagnostics.CodeAnalysis
+@attribute [ExcludeFromCodeCoverage]
+
+<!-- When an error occurs in the webapp this will be the format -->
  @model ErrorViewModel 
 @{
     ViewData["Title"] = "Error";
