@@ -49,9 +49,9 @@ namespace Project.Areas.Identity.Pages.Account
 
 		public async Task OnGetAsync(string returnUrl = null)
 		{
-			// Other action methods can set ErrorMessage temp data to pass error messages to LoginModel from another controller
-			// If an error message was passed then it will be displayed in the view of the Login page
-			if (!string.IsNullOrEmpty(ErrorMessage))
+            // Other action methods can set ErrorMessage temp data to pass error messages to LoginModel from another controller
+            // If an error message was passed then it will be displayed in the view of the Login page
+            if (!string.IsNullOrEmpty(ErrorMessage))
 			{
 				ModelState.AddModelError(string.Empty, ErrorMessage);
 			}
