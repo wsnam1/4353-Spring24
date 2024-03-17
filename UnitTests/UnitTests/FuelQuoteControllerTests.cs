@@ -35,8 +35,6 @@ public class FuelQuoteControllerTests
         return mockDbSet;
     }
 
-
-
     // GET of Index method with userProfile != null
     [TestMethod]
     public void Index_ReturnsViewResult_ViewBagAddress1()

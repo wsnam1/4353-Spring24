@@ -221,7 +221,7 @@ var assemblies = [
   {
     "name": "Project",
     "classes": [
-      { "name": "ProfileCompletionFilterAttribute", "rp": "Project_ProfileCompletionFilterAttribute.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 33, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ProfileCompletionFilterAttribute", "rp": "Project_ProfileCompletionFilterAttribute.html", "cl": 15, "ucl": 0, "cal": 15, "tl": 33, "cb": 4, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Program", "rp": "Project_Program.html", "cl": 0, "ucl": 28, "cal": 28, "tl": 49, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Areas.Identity.Pages.Account.LoginModel", "rp": "Project_LoginModel.html", "cl": 34, "ucl": 0, "cal": 34, "tl": 93, "cb": 10, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "Project.Areas.Identity.Pages.Account.RegisterModel", "rp": "Project_RegisterModel.html", "cl": 49, "ucl": 5, "cal": 54, "tl": 126, "cb": 9, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
@@ -246,12 +246,6 @@ var riskHotspotMetrics = [
 ];
 
 var riskHotspots = [
-  {
-    "assembly": "Project", "class": "ProfileCompletionFilterAttribute", "reportPath": "Project_ProfileCompletionFilterAttribute.html", "methodName": "OnActionExecutionAsync()", "methodShortName": "OnActionExecutionAsync()", "fileIndex": 0, "line": 9,
-    "metrics": [
-      { "value": 20, "exceeded": true },
-      { "value": 4, "exceeded": false },
-    ]},
   {
     "assembly": "Project", "class": "Program", "reportPath": "Project_Program.html", "methodName": "<Main>$(System.String[])", "methodShortName": "<Main>$(...)", "fileIndex": 0, "line": 5,
     "metrics": [
