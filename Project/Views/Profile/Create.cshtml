@@ -7,7 +7,7 @@
 
 <body>
     <div class="profile-container">
-        <h2 class="profile-h2">Create Profile</h2>
+        <h2 class="profile-h2">Create your profile first</h2>
         <form class="profile-form" asp-action="Create" method="post" id="profileForm">
             <label class="profile-label" for="fullName">Full Name:</label>
             <input class="profile-input" asp-for="FullName" type="text" id="fullName" name="fullName" maxlength="50" required>
@@ -82,7 +82,7 @@
             <span asp-validation-for="State" class="text-danger"></span>
 
             <label class="profile-label" for="zipcode">Zipcode:</label>
-            <input class="profile-input" asp-for="Zipcode" type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="9" required>
+            <input class="profile-input" asp-for="Zipcode" type="text" id="zipcode" name="zipcode" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" required>
             <span asp-validation-for="Zipcode" class="text-danger"></span>
 
             <button class="profile-button" type="submit">Save Profile</button>

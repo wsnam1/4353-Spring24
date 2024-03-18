@@ -4,8 +4,7 @@
 
 <form method="post" asp-action="Index">
 
-    <!-- Assigning static values to hidden fields -->
-    <input type="hidden" asp-for="DeliveryAddress" value="123 Main Street" />
+    <!-- Assigning static values to hidden fields since we don't have pricing module yet-->
     <input type="hidden" asp-for="SuggestedPrice" value="1" />
     <input type="hidden" asp-for="TotalAmountDue" value="1" />
 
@@ -18,17 +17,18 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" tabindex="1" required autofocus>
+                <input asp-for="GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" min="1" step="1"  name="gallonsRequested" tabindex="1" required autofocus>
+                <span asp-validation-for="GallonsRequested" class="text-danger"></span>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input class="form-control" type="text" value="@ViewBag.DeliveryAddress" tabindex="2" readonly>
+                <input asp-for="DeliveryAddress"  class="form-control" type="text" value="@ViewBag.DeliveryAddress" tabindex="2" required readonly>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3">
+                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required>
             </div>
         </div>
         <div class="row mb-3">

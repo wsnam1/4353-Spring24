@@ -7,31 +7,36 @@
 
 <body>
     <div class="profile-container">
-        <h2 class="profile-h2">Edit Profile</h2>
+        <h2 class="profile-h2">Edit your profile</h2>
         <form class="profile-form" asp-action="Edit" method="post" id="profileForm">
 
             <label class="profile-label">Full Name:</label>
             <div class="profile-form-field">
                 <input asp-for="FullName" type="text" class="profile-edit-input" id="fullName" name="fullName" maxlength="50" required readonly>
                 <button type="button" class="profile-button" onclick="toggleEdit('fullName')">Edit</button>
+                <span asp-validation-for="FullName" class="text-danger"></span>
             </div>
+            
 
             <label class="profile-label">Address 1:</label>
             <div class="profile-form-field">
                 <input asp-for="Address1" type="text" class="profile-edit-input" id="address1" name="address1" maxlength="100" required readonly>
                 <button type="button" class="profile-button" onclick="toggleEdit('address1')">Edit</button>
+                <span asp-validation-for="Address1" class="text-danger"></span>
             </div>
 
             <label class="profile-label">Address 2:</label>
             <div class="profile-form-field">
                 <input asp-for="Address2" type="text" class="profile-edit-input" id="address2" name="address2" maxlength="100" readonly>
                 <button type="button" class="profile-button" onclick="toggleEdit('address2')">Edit</button>
+                <span asp-validation-for="Address2" class="text-danger"></span>
             </div>
 
             <label class="profile-label">City:</label>
             <div class="profile-form-field">
                 <input asp-for="City" type="text" class="profile-edit-input" id="city" name="city" maxlength="100" required readonly>
                 <button type="button" class="profile-button" onclick="toggleEdit('city')">Edit</button>
+                <span asp-validation-for="City" class="text-danger"></span>
             </div>
 
             <label class="profile-label">State:</label>
@@ -89,12 +94,14 @@
                         <option value="WY">Wyoming</option>
                     </select>
                 <button type="button" class="profile-button" onclick="toggleEdit('state')">Edit</button>
+                <span asp-validation-for="State" class="text-danger"></span>
             </div>
 
             <label class="profile-label">Zipcode:</label>
             <div class="profile-form-field">
-                <input asp-for="Zipcode" type="text" class="profile-edit-input" id="zipcode" name="zipcode" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="9" required readonly>
+                <input asp-for="Zipcode" type="text" class="profile-edit-input" id="zipcode" name="zipcode" pattern="[0-9]{5}(-[0-9]{4})?" maxlength="10" required readonly>
                 <button type="button" class="profile-button" onclick="toggleEdit('zipcode')">Edit</button>
+                <span asp-validation-for="Zipcode" class="text-danger"></span>
             </div>
 
             <button type="submit" class="profile-button profile-save-button">Save</button>
