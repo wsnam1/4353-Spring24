@@ -7,9 +7,10 @@ namespace Project.Models;
 public class FuelHistory
 {
     [Key]
-    [Required]
     public string UserId { get; set; } = null!;
 
+    [Required(ErrorMessage = "Gallons Requested is required.")]
+    [Range(1, Int32.MaxValue, ErrorMessage = "Please enter a valid number for gallons requested.")]
     public int GallonsRequested { get; set; }
 
     public string DeliveryAddress { get; set; } =  null!;
