@@ -94,7 +94,7 @@ namespace Project.Controllers
         }
 
         // GET: /FuelQuote/History
-        public async Task<IActionResult> History()
+        public IActionResult History()
         {
             // Step 1: Get the id of the user. We have some code above for this.
 			var userId = _userManager.GetUserId(User);
@@ -102,11 +102,11 @@ namespace Project.Controllers
             // Step 2: Get a list of all the fuel quote histories from the FuelHistories table in the db that match the user id
             // You can use the .Where() and .ToListAsync() methods for this
 
-			var FuelQuotes = _context.FuelHistories.Where(f => f.UserId == userId).ToListAsync();
+			var fuelQuotes = _context.FuelHistories.AsNoTracking().Where(f => f.UserId == userId).ToList();
 
             // Step 3: Pass the list of histories to the view using the return statement
 
-            return View(FuelQuotes);
+            return View(fuelQuotes);
 		}
 	}
 }

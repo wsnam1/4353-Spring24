@@ -4,6 +4,7 @@ using Project.Controllers;
 using Project.Models;
 using System.Security.Claims;
 using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Bcpg;
 
 
 
@@ -291,11 +292,50 @@ public class FuelQuoteControllerTests
     [TestMethod]
     public void History_ReturnsViewResult()
     {
+        var userId = "TestId";
+
+        // Set up the mock DbSet for UserProfiles
+        var mockFuelHistories = new List<FuelHistory>
+        {
+            new FuelHistory
+            {
+                // Populate with valid data
+                UserId = userId,
+                GallonsRequested = 100,
+                DeliveryAddress = "123 Main St",
+                DeliveryDate = "2022-01-01",
+                SuggestedPrice = 1.99m,
+                TotalAmountDue = 199
+            },
+            new FuelHistory
+            {
+                // Populate with valid data
+                UserId = userId,
+                GallonsRequested = 100,
+                DeliveryAddress = "123 Main St",
+                DeliveryDate = "2022-01-01",
+                SuggestedPrice = 1.99m,
+                TotalAmountDue = 199
+            }
+        }.AsQueryable();
+
+        var mockFuelHistoriesDbSet = CreateMockDbSet(mockFuelHistories);
+
+        _mockInitializer.MockUserManager
+            .Setup(um => um.GetUserId(It.IsAny<ClaimsPrincipal>()))
+            .Returns(userId);
+
+        _mockInitializer.MockContext
+            .Setup(c => c.FuelHistories)
+            .Returns(mockFuelHistoriesDbSet.Object);
+
         // Act
         var result = _controller.History();
 
         // Assert
         Assert.IsNotNull(result);
-        Assert.IsInstanceOfType(result, typeof(Task<IActionResult>));
+        Assert.IsInstanceOfType(result, typeof(ViewResult));
+        var viewResult = (ViewResult)result;
+        Assert.IsInstanceOfType(viewResult.Model, typeof(List<FuelHistory>));
     }
 }

@@ -128,3 +128,12 @@ body {
     margin-bottom: 10px;
     background-color: #A9A9A9;
 }
+
+.table-history {
+    margin-top: 40px;
+}
+
+.table-history th, td {
+    border: 1px solid #dee2e6;
+    border-collapse: collapse;
+}

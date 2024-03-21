@@ -1,50 +1,30 @@
 @using System.Diagnostics.CodeAnalysis
 @attribute [ExcludeFromCodeCoverage]
-
 @model IEnumerable<Project.Models.FuelHistory>
 
-<div class="container ">
-    <div class="row pt-4 pb-3">
 
-        <div class="col-6">
-            <h1 class="text-primary">
-                Fuel Quote History
-            </h1>
-        </div>
+<h1 class="text-primary">Fuel Quote History</h1>
 
-        <div class="col-6 text-end">
-            <a asp-controller="FuelQuote" asp-action="Index" class="btn btn-primary">
-                <i class="bi bi-plus-circle"></i>More Quote
-            </a>
-        </div>
-
-    </div>
-
-    <table class="table table-bordered table-striped table-responsive">
-        <thead>
+<table class="table table-history">
+    <thead>
+        <tr>
+            <th scope="col">Gallons Requested</th>
+            <th scope="col">Delivery Date</th>
+            <th scope="col">Delivery Address</th>
+            <th scope="col">Suggested Price</th>
+            <th scope="col">Total Amount Due</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>
-                    Id
-                </th>
-                <th>
-                    Gallons Requested
-                </th>
-                <th>
-                    Delivery Address
-                </th>
+                <td>@item.GallonsRequested</td>
+                <td>@item.DeliveryDate</td>
+                <td>@item.DeliveryAddress</td>
+                <td>@item.SuggestedPrice</td>
+                <td>@item.TotalAmountDue</td>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>@item.GallonsRequested</td>
-                    <td>@item.DeliveryDate</td>
-                    <td>@item.DeliveryAddress</td>
-                    <td>@item.SuggestedPrice</td>
-                    <td>@item.TotalAmountDue</td>
-                </tr>
-            }
-        </tbody>
-    </table>
-</div> 
+        }
+    </tbody>
+</table>
