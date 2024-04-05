@@ -104,12 +104,15 @@
             var deliveryDateInput = document.getElementById("deliveryDateInput");
 
             // Check if there is already a value present in the GallonsRequested field
-            if (gallonsRequestedInput.value.trim() !== "") {
+            if (!isNaN(gallonsRequestedInput.value) && parseFloat(gallonsRequestedInput.value) > 0) {
                 gallonsRequestedInput.readOnly = true;
             }
-
+        var deliveryDateValue = deliveryDateInput.value;
+        var today = new Date();
+        var deliveryDate = new Date(deliveryDateValue);
+        
             // Check if there is already a value present in the DeliveryDate field
-            if (deliveryDateInput.value.trim() !== "") {
+            if (deliveryDateInput.value.trim() !== "" &&deliveryDate > today ) {
                 deliveryDateInput.readOnly = true;
             }
         }
