@@ -3,10 +3,7 @@
 @attribute [ExcludeFromCodeCoverage]
 
 <form method="post" asp-action="Index">
-
-
-
-
+    
     <div class="container mt-4">
         <div class="row">
             <div class="col">
@@ -31,14 +28,15 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input   placeholder="Suggested Price per gallon" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly value="@ViewBag.SuggestedPrice">
+                <input asp-for="SuggestedPrice" placeholder="Suggested Price per gallon" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly value="@ViewBag.SuggestedPrice">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input  placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly value="@ViewBag.TotalAmountDue">
+                <input asp-for="TotalAmountDue"  placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly value="@ViewBag.TotalAmountDue">
             </div>
         </div>
+        
         @{
             // Check if GallonsRequested has a value
             int? gallonsRequestedExists = Model?.GallonsRequested ;
@@ -57,12 +55,12 @@
         else
         {
             <div class="row mb-3">
-                <div class="col-6 py-2">
+                <div class="col-12">
                     <button type="submit" class="btn btn-primary btn-block form-control">Get Quote</button>
                 </div>
-                <div class="col-6 py-2">
-                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a>
-                </div>
+                @* <div class="col-6 py-2"> *@
+                @*     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a> *@
+                @* </div> *@
             </div>
         }
     </div>
