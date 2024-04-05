@@ -5,7 +5,7 @@
 
 <h1 class="text-primary">Fuel Quote History</h1>
 
-<table class="table table-history">
+<table class="table table-striped">
     <thead>
         <tr>
             <th scope="col">Gallons Requested</th>
@@ -22,8 +22,8 @@
                 <td>@item.GallonsRequested</td>
                 <td>@item.DeliveryDate</td>
                 <td>@item.DeliveryAddress</td>
-                <td>@item.SuggestedPrice</td>
-                <td>@item.TotalAmountDue</td>
+                <td>$@item.SuggestedPrice</td>
+                <td>$@item.TotalAmountDue</td>
             </tr>
         }
     </tbody>
