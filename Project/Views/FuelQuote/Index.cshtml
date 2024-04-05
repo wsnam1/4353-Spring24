@@ -4,9 +4,7 @@
 
 <form method="post" asp-action="Index">
 
-    <!-- Assigning static values to hidden fields since we don't have pricing module yet-->
-    <input type="hidden" asp-for="SuggestedPrice" value="1" />
-    <input type="hidden" asp-for="TotalAmountDue" value="1" />
+
 
 
     <div class="container mt-4">
@@ -33,26 +31,41 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input placeholder="Suggested Price per gallon" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly><!-- Price will be calculated by Pricing Module -->
+                <input   placeholder="Suggested Price per gallon" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly value="@ViewBag.SuggestedPrice">
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly><!-- Calculated (gallons * price) -->
+                <input  placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly value="@ViewBag.TotalAmountDue">
             </div>
         </div>
-        <div class="row mb-3">
-            <div class="col-6 py-2">
-                <button type="submit" class="btn btn-primary btn-block form-control ">Submit</button>
+        @{
+            // Check if GallonsRequested has a value
+            int? gallonsRequestedExists = Model?.GallonsRequested ;
+        }
+        @if (gallonsRequestedExists.HasValue && gallonsRequestedExists > 0)
+        {
+            <div class="row mb-3">
+                <div class="col-6 py-2">
+                    <button type="submit" class="btn btn-primary btn-block form-control">Submit</button>
+                </div>
+                <div class="col-6 py-2">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a>
+                </div>
             </div>
-            <div class="col-6 py-2">
-                
-                <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a>
+        }
+        else
+        {
+            <div class="row mb-3">
+                <div class="col-6 py-2">
+                    <button type="submit" class="btn btn-primary btn-block form-control">Get Quote</button>
+                </div>
+                <div class="col-6 py-2">
+                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a>
+                </div>
             </div>
-        </div>
+        }
     </div>
 </form>
-
-
 
 

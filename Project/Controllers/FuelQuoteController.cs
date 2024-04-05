@@ -58,7 +58,10 @@ namespace Project.Controllers
                 fuelQuote.UserId = userId;
 				ModelState.Remove("UserId"); // Remove ModelState errors for UserId
             }
-
+            // Calculate price
+            Pricing pricing = new Pricing();
+            fuelQuote.SuggestedPrice = pricing.CalculatePrice(fuelQuote.GallonsRequested, true, true);
+            fuelQuote.TotalAmountDue = fuelQuote.SuggestedPrice * fuelQuote.GallonsRequested;
             // Check if the model state is valid.
             if (ModelState.IsValid)
 	        {
@@ -87,7 +90,9 @@ namespace Project.Controllers
                 // Temporary else statement
                 ViewBag.DeliveryAddress = "Null";
             }
-
+            // Pass the calculated SuggestedPrice and TotalAmountDue to the view
+            ViewBag.SuggestedPrice = fuelQuote.SuggestedPrice;
+            ViewBag.TotalAmountDue = fuelQuote.TotalAmountDue;
             // If the model state is not valid (e.g., required fields are missing or validation rules are not met), return the current view with the fuelQuote model. This allows the form to be re-displayed with the entered values and any validation messages.
             return View(fuelQuote);
 
@@ -108,5 +113,8 @@ namespace Project.Controllers
 
             return View(fuelQuotes);
 		}
+        
+        
+        
 	}
 }
