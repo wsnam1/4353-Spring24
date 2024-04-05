@@ -12,7 +12,7 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="GallonsRequested" class="form-control" placeholder="Gallons Requested" type="number" min="1" step="1"  name="gallonsRequested" tabindex="1" required autofocus>
+                <input asp-for="GallonsRequested" id="gallonsRequestedInput" class="form-control" placeholder="Gallons Requested" type="number" min="1" step="1"  name="gallonsRequested" tabindex="1" required autofocus>
                 <span asp-validation-for="GallonsRequested" class="text-danger"></span>
             </div>
         </div>
@@ -23,7 +23,7 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="DeliveryDate" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required>
+                <input asp-for="DeliveryDate"  id="deliveryDateInput" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required>
             </div>
         </div>
         <div class="row mb-3">
@@ -56,7 +56,7 @@
         {
             <div class="row mb-3">
                 <div class="col-12">
-                    <button type="submit" class="btn btn-primary btn-block form-control">Get Quote</button>
+                    <button   id="getQuoteBtn" type="submit" class="btn btn-primary btn-block form-control">Get Quote</button>
                 </div>
                 @* <div class="col-6 py-2"> *@
                 @*     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a> *@
@@ -66,4 +66,31 @@
     </div>
 </form>
 
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // Function to check and set read-only state of fields
+        function setReadOnlyState() {
+            var gallonsRequestedInput = document.getElementById("gallonsRequestedInput");
+            var deliveryDateInput = document.getElementById("deliveryDateInput");
 
+            // Check if there is already a value present in the GallonsRequested field
+            if (gallonsRequestedInput.value.trim() !== "") {
+                gallonsRequestedInput.readOnly = true;
+            }
+
+            // Check if there is already a value present in the DeliveryDate field
+            if (deliveryDateInput.value.trim() !== "") {
+                deliveryDateInput.readOnly = true;
+            }
+        }
+
+        // Check and set read-only state when the page loads
+        setReadOnlyState();
+
+        // Attach click event handler to the "Get Quote" button
+        document.getElementById("getQuoteBtn").addEventListener("click", function() {
+            // Set read-only state when the button is clicked
+            setReadOnlyState();
+        });
+    });
+</script>

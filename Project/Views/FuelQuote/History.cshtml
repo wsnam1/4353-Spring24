@@ -5,26 +5,28 @@
 
 <h1 class="text-primary">Fuel Quote History</h1>
 
-<table class="table table-striped">
-    <thead>
-        <tr>
-            <th scope="col">Gallons Requested</th>
-            <th scope="col">Delivery Date</th>
-            <th scope="col">Delivery Address</th>
-            <th scope="col">Suggested Price</th>
-            <th scope="col">Total Amount Due</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+<div style="height: 1200px; overflow: auto;">
+    <table class="table table-striped">
+        <thead>
             <tr>
-                <td>@item.GallonsRequested</td>
-                <td>@item.DeliveryDate</td>
-                <td>@item.DeliveryAddress</td>
-                <td>$@item.SuggestedPrice</td>
-                <td>$@item.TotalAmountDue</td>
+                <th scope="col">Gallons Requested</th>
+                <th scope="col">Delivery Date</th>
+                <th scope="col">Delivery Address</th>
+                <th scope="col">Suggested Price</th>
+                <th scope="col">Total Amount Due</th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.GallonsRequested</td>
+                    <td>@item.DeliveryDate</td>
+                    <td>@item.DeliveryAddress</td>
+                    <td>$@item.SuggestedPrice</td>
+                    <td>$@item.TotalAmountDue</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
