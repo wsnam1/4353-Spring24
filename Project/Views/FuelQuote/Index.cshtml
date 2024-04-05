@@ -2,6 +2,8 @@
 @using System.Diagnostics.CodeAnalysis
 @attribute [ExcludeFromCodeCoverage]
 
+
+
 <form method="post" asp-action="Index">
     
     <div class="container mt-4">
@@ -12,28 +14,56 @@
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="GallonsRequested" id="gallonsRequestedInput" class="form-control" placeholder="Gallons Requested" type="number" min="1" step="1"  name="gallonsRequested" tabindex="1" required autofocus>
+                <label class="form-label">Gallons Requested</label>
+                <div class="input-group">
+
+                <input asp-for="GallonsRequested" id="gallonsRequestedInput" class="form-control" placeholder="Gallons Requested" type="number" min="1" step="1" name="gallonsRequested" tabindex="1" required autofocus>
                 <span asp-validation-for="GallonsRequested" class="text-danger"></span>
+                <div class="input-group-prepend">
+                    <span class="input-group-text">gal</span>
+                </div>
+                
+                </div>
+                
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="DeliveryAddress"  class="form-control" type="text" value="@ViewBag.DeliveryAddress" tabindex="2" required readonly>
+                <label class="form-label">DeliveryAddress</label>
+                <input asp-for="DeliveryAddress" class="form-control" type="text" value="@ViewBag.DeliveryAddress" tabindex="2" required readonly>
+            </div>
+        </div>
+        
+        <div class="row mb-3">
+            <div class="col">
+                 <label class="form-label">DeliveryDate</label>
+                <input asp-for="DeliveryDate" id="deliveryDateInput" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required>
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="DeliveryDate"  id="deliveryDateInput" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required>
+                 <label class="form-label">Suggested Price Per Gallon</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                    </div>
+
+                    <input asp-for="SuggestedPrice" placeholder="Suggested Price" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly value="@ViewBag.SuggestedPrice">
+                </div>
+
             </div>
         </div>
         <div class="row mb-3">
             <div class="col">
-                <input asp-for="SuggestedPrice" placeholder="Suggested Price per gallon" class="form-control" type="number" name="suggestedPrice" tabindex="4" readonly value="@ViewBag.SuggestedPrice">
-            </div>
-        </div>
-        <div class="row mb-3">
-            <div class="col">
-                <input asp-for="TotalAmountDue"  placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly value="@ViewBag.TotalAmountDue">
+                 <label class="form-label">Total AmountDue</label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">$</span>
+                        </div>
+                    <input asp-for="TotalAmountDue" placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly value="@ViewBag.TotalAmountDue">
+
+                    
+                    </div>
             </div>
         </div>
         
