@@ -49,7 +49,7 @@ namespace Project.Controllers
         {
             // Get the Id of the current logged-in user
             var userId = _userManager.GetUserId(User);
-
+            var user = _context.UserProfiles.SingleOrDefault(p => p.UserId == userId);
 
             // Assign values programmatically
 
@@ -60,7 +60,9 @@ namespace Project.Controllers
             }
             // Calculate price
             Pricing pricing = new Pricing();
-            fuelQuote.SuggestedPrice = pricing.CalculatePrice(fuelQuote.GallonsRequested, true, true);
+            bool inState = user != null && user.State == "TX";
+            bool hasHistory = _context.FuelHistories.Any(f => f.UserId == userId);
+            fuelQuote.SuggestedPrice = pricing.CalculatePrice(fuelQuote.GallonsRequested, inState, hasHistory);
             fuelQuote.TotalAmountDue = fuelQuote.SuggestedPrice * fuelQuote.GallonsRequested;
             // Check if the model state is valid.
             if (ModelState.IsValid)
