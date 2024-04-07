@@ -4,7 +4,7 @@
 
 
 
-<form method="post" asp-action="Index">
+<form method="post" asp-action="GetQuote">
     
     <div class="container mt-4">
         <div class="row">
@@ -16,7 +16,7 @@
             <div class="col">
                 <div class="input-group-lg">
                     <div class="form-floating">
-                        <input asp-for="GallonsRequested" id="gallonsRequestedInput" class="form-control" placeholder="Gallons Requested" type="number" min="1" step="1" name="gallonsRequested" tabindex="1" required autofocus>
+                        <input asp-for="GallonsRequested" id="gallonsRequestedInput" class="form-control" placeholder="Gallons Requested" type="number" step="1" name="gallonsRequested" tabindex="1" required autofocus>
                         <span asp-validation-for="GallonsRequested" class="text-danger"></span>
                         <label >Gallons Requested</label>
 
@@ -34,7 +34,7 @@
                         
                         <input asp-for="DeliveryAddress" class="form-control" type="text" value="@ViewBag.DeliveryAddress" tabindex="2" required readonly>
  
-                        <label class="form-label">DeliveryAddress</label>
+                        <label class="form-label">Delivery Address</label>
                 
                     </div>
 
@@ -49,7 +49,7 @@
                     <div class="form-floating">
                         <input asp-for="DeliveryDate" id="deliveryDateInput" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required>
                 
-                        <label class="form-label">DeliveryDate</label>
+                        <label class="form-label">Delivery Date</label>
                                 
                     </div>
                                 
@@ -83,7 +83,7 @@
 
                         <input asp-for="TotalAmountDue" placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" tabindex="5" readonly value="@ViewBag.TotalAmountDue">
 
-                        <label class="form-label">Total AmountDue</label>
+                        <label class="form-label">Total Amount Due</label>
                         
 
                     </div>
@@ -93,64 +93,10 @@
 
             </div>
         </div>
-        
-        @{
-            // Check if GallonsRequested has a value
-            int? gallonsRequestedExists = Model?.GallonsRequested ;
-        }
-        @if (gallonsRequestedExists.HasValue && gallonsRequestedExists > 0)
-        {
-            <div class="row mb-3">
-                <div class="col-6 py-2">
-                    <button type="submit" class="btn btn-primary btn-block form-control">Submit</button>
-                </div>
-                <div class="col-6 py-2">
-                    <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a>
-                </div>
-            </div>
-        }
-        else
-        {
             <div class="row mb-3">
                 <div class="col-12">
                     <button   id="getQuoteBtn" type="submit" class="btn btn-primary btn-block form-control">Get Quote</button>
                 </div>
-                @* <div class="col-6 py-2"> *@
-                @*     <a asp-controller="Home" asp-action="Index" class="btn btn-secondary form-control">Back</a> *@
-                @* </div> *@
             </div>
-        }
     </div>
 </form>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Function to check and set read-only state of fields
-        function setReadOnlyState() {
-            var gallonsRequestedInput = document.getElementById("gallonsRequestedInput");
-            var deliveryDateInput = document.getElementById("deliveryDateInput");
-
-            // Check if there is already a value present in the GallonsRequested field
-            if (!isNaN(gallonsRequestedInput.value) && parseFloat(gallonsRequestedInput.value) > 0) {
-                gallonsRequestedInput.readOnly = true;
-            }
-        var deliveryDateValue = deliveryDateInput.value;
-        var today = new Date();
-        var deliveryDate = new Date(deliveryDateValue);
-        
-            // Check if there is already a value present in the DeliveryDate field
-            if (deliveryDateInput.value.trim() !== "" &&deliveryDate > today ) {
-                deliveryDateInput.readOnly = true;
-            }
-        }
-
-        // Check and set read-only state when the page loads
-        setReadOnlyState();
-
-        // Attach click event handler to the "Get Quote" button
-        document.getElementById("getQuoteBtn").addEventListener("click", function() {
-            // Set read-only state when the button is clicked
-            setReadOnlyState();
-        });
-    });
-</script>

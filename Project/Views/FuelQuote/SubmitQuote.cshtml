@@ -1,0 +1,105 @@
+﻿@model Project.Models.FuelHistory
+@using System.Diagnostics.CodeAnalysis
+@attribute [ExcludeFromCodeCoverage]
+
+
+
+<form method="post" asp-action="SubmitQuote">
+
+    <div class="container mt-4">
+        <div class="row">
+            <div class="col">
+                <h1 class="text-primary">Fuel Quote Form</h1>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+                <div class="input-group-lg">
+                    <div class="form-floating">
+                        <input asp-for="GallonsRequested" id="gallonsRequestedInput" class="form-control" placeholder="Gallons Requested" type="number" name="gallonsRequested" required autofocus readonly>
+                        <span asp-validation-for="GallonsRequested" class="text-danger"></span>
+                        <label>Gallons Requested</label>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+
+                <div class="input-group-lg">
+                    <div class="form-floating">
+
+                        <input asp-for="DeliveryAddress" class="form-control" value="@ViewBag.DeliveryAddress" type="text" required readonly>
+                        <span asp-validation-for="DeliveryAddress" class="text-danger"></span>
+
+                        <label class="form-label">Delivery Address</label>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col">
+                <div class="input-group-lg">
+                    <div class="form-floating">
+                        <input asp-for="DeliveryDate" id="deliveryDateInput" class="form-control" placeholder="Delivery Date" type="date" min="@DateTime.Now.ToString("yyyy-MM-dd")" name="deliveryDate" tabindex="3" required readonly>
+                        <span asp-validation-for="DeliveryDate" class="text-danger"></span>
+                        <label class="form-label">Delivery Date</label>
+
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+
+                <div class="input-group-lg">
+                    <div class="form-floating">
+                        <input asp-for="SuggestedPrice" placeholder="Suggested Price" class="form-control" type="number" name="suggestedPrice" readonly>
+                        <span asp-validation-for="SuggestedPrice" class="text-danger"></span>
+                        <label class="form-label">Suggested Price Per Gallon</label>
+
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col">
+
+                <div class="input-group-lg">
+
+                    <div class="form-floating">
+
+                        <input asp-for="TotalAmountDue" placeholder="Total Amount Due" class="form-control" type="number" name="totalAmountDue" readonly>
+                        <span asp-validation-for="TotalAmountDue" class="text-danger"></span>
+                        <label class="form-label">Total Amount Due</label>
+
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+            <div class="row mb-3">
+                <div class="col-6 py-2">
+                    <button type="submit" class="btn btn-primary btn-block form-control">Submit</button>
+                </div>
+                <div class="col-6 py-2">
+                    <a asp-controller="FuelQuote" asp-action="GetQuote" class="btn btn-secondary form-control">Back</a>
+                </div>
+            </div>
+    </div>
+</form>
+
